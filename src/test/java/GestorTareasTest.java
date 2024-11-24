@@ -1,4 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import javax.swing.plaf.metal.MetalBorders.TableHeaderBorder;
+
 import org.junit.jupiter.api.Test;
 
 public class GestorTareasTest {
@@ -17,7 +20,18 @@ public class GestorTareasTest {
     gestor.agregarTarea(tarea1);
     gestor.agregarTarea(tarea2);
 
-    assertEquals(1, gestor.obtenerTotalTareas(), "Deberia tener 1 tarea");
+    assertEquals(2, gestor.obtenerTotalTareas(), "Deberia tener 2 tarea");
 
+  }
+
+  @Test
+  public void testTituloTarea(){
+
+    Tarea tarea = new Tarea();
+    GestorTareas gestor = new GestorTareas();
+
+    tarea.setTitulo("Titulo de la tarea");
+
+    assertEquals("Titulo de la tarea", tarea.getTitulo(), "El titulo de la tarea debe ser Titulo de la tarea");
   }
 }

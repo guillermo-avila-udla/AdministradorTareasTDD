@@ -2,7 +2,14 @@
 
 public class Tarea {
 
-	public void setTitulo(String string) {
+	private String titulo;
+	
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public Object getTitulo() {
+		return this.titulo;
 	}
 
 }
