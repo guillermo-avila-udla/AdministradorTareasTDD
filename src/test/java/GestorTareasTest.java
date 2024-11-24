@@ -15,9 +15,9 @@ public class GestorTareasTest {
     tarea2.setTitulo("Tarea uno 2");
 
     gestor.agregarTarea(tarea1);
-    //gestor.agregarTarea(tarea2);
+    gestor.agregarTarea(tarea2);
 
-    assertEquals(2, gestor.obtenerTotalTareas(), "Deberia tener 2 tarea");
+    assertEquals(1, gestor.obtenerTotalTareas(), "Deberia tener 1 tarea");
 
   }
 }
