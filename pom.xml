@@ -44,7 +44,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.2.0</version> <!-- Versión actualizada -->
                 <configuration>
-                    <configLocation>src/main/resources/google_checks.xml</configLocation> <!-- Reglas de estilo -->
+                    <configLocation>src/main/resources/sun_checks.xml</configLocation> <!-- Reglas de estilo -->
                 </configuration>
                 <dependencies>
                     <dependency>
