@@ -1,0 +1,51 @@
+name: CI/CD para Proyecto Java
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Clonar el repositorio
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      # Paso 2: Configurar JDK
+      - name: Configurar JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      # Paso 3: Construir el proyecto
+      - name: Construcción con Maven
+        run: mvn clean install
+
+      # Paso 4: Ejecutar pruebas
+      - name: Ejecutar pruebas
+        run: mvn test
+
+      # Paso 5: Análisis estático con Checkstyle
+      - name: Checkstyle
+        run: mvn checkstyle:check
+
+      # Paso 6: Análisis estático con SpotBugs
+      - name: SpotBugs
+        run: mvn spotbugs:spotbugs
+
+      # Paso 7: Generar reporte de cobertura con JaCoCo
+      - name: Generar Reporte de Cobertura
+        run: mvn jacoco:report
+
+      # (Opcional) Paso 8: Subir métricas a Codecov
+      - name: Publicar cobertura en Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # Generar token en https://codecov.io/
