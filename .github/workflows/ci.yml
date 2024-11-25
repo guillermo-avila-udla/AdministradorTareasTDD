@@ -37,23 +37,29 @@ jobs:
         run: mvn checkstyle:check
         continue-on-error: true
 
+      - name: Subir reporte de Checkstyle
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-checkstyle
+          path: target/checkstyle-result.xml
+
       # Paso 6: Análisis estático con SpotBugs
       - name: SpotBugs
         run: mvn spotbugs:spotbugs
 
       - name: Subir reporte SpotBugs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: reporte-spotbugs
           path: target/spotbugs-html
 
       # Paso 7: Generar Reporte de Cobertura con JaCoCo
-      - name: Generar Reporte de Cobertura
+      - name: Cobertura
         run: mvn jacoco:report
 
       # Paso 8: Subir reporte de cobertura como artefacto
-      - name: Guardar Reporte de Cobertura
-        uses: actions/upload-artifact@v3
+      - name: Subir reporte de cobertura
+        uses: actions/upload-artifact@v4
         with:
           name: reporte-cobertura
           path: target/site/jacoco/index.html
