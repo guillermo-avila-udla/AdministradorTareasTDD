@@ -40,6 +40,12 @@ jobs:
       - name: SpotBugs
         run: mvn spotbugs:spotbugs
 
+      - name: Subir reporte SpotBugs
+        uses: actions/upload-artifact@v3
+        with:
+          name: reporte-spotbugs
+          path: target/spotbugs-html
+
       # Paso 7: Generar Reporte de Cobertura con JaCoCo
       - name: Generar Reporte de Cobertura
         run: mvn jacoco:report
