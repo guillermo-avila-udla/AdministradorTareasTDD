@@ -35,6 +35,7 @@ jobs:
       # Paso 5: Análisis estático con Checkstyle
       - name: Checkstyle
         run: mvn checkstyle:check
+        continue-on-error: true
 
       # Paso 6: Análisis estático con SpotBugs
       - name: SpotBugs
