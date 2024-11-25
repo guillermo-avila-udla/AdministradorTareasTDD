@@ -65,6 +65,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <outputFormat>html</outputFormat> <!-- Generar reporte en HTML -->
+                    <outputDirectory>${project.build.directory}/spotbugs-html</outputDirectory> <!-- Carpeta de salida -->
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
