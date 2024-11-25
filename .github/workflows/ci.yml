@@ -40,6 +40,13 @@ jobs:
       - name: SpotBugs
         run: mvn spotbugs:spotbugs
 
-      # Paso 7: Generar reporte de cobertura con JaCoCo
+      # Paso 7: Generar Reporte de Cobertura con JaCoCo
       - name: Generar Reporte de Cobertura
         run: mvn jacoco:report
+
+      # Paso 8: Subir reporte de cobertura como artefacto
+      - name: Guardar Reporte de Cobertura
+        uses: actions/upload-artifact@v3
+        with:
+          name: reporte-cobertura
+          path: target/site/jacoco/index.html
